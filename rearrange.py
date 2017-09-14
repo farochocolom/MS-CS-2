@@ -36,7 +36,7 @@ print(''.join(reversed(sentence)))
 
 
 number = input("Number: ")
-profession1 = str(input("Enter a profession: "))
+profession1 = input("Enter a profession: ")
 profession2 = input("Enter another profession: ")
 city1 = input("Enter a city: ")
 name = input("Enter a name: ")
