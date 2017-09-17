@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="05928f83-98bd-4e4b-9987-ebfe4cd2331c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dictionary_words.py" afterPath="$PROJECT_DIR$/dictionary_words.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/histogram.py" afterPath="$PROJECT_DIR$/histogram.py" />
     </list>
     <ignored path="CS-2_TweetGenerator.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -25,23 +26,30 @@
       <file leaf-file-name="rearrange.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/rearrange.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="377">
-              <caret line="19" column="34" selection-start-line="13" selection-start-column="4" selection-end-line="19" selection-end-column="34" />
-              <folding>
-                <element signature="e#24#37#0" expanded="true" />
-                <marker date="1505670746000" expanded="true" signature="234:2085" ph="..." />
-              </folding>
+            <state relative-caret-position="30">
+              <caret line="2" column="10" selection-start-line="2" selection-start-column="10" selection-end-line="2" selection-end-column="10" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="dictionary_words.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="dictionary_words.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dictionary_words.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="564">
-              <caret line="36" column="28" selection-start-line="36" selection-start-column="28" selection-end-line="36" selection-end-column="28" />
+            <state relative-caret-position="30">
+              <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="3" selection-end-column="11" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="histogram.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/histogram.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-384">
+              <caret line="12" column="17" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
               <folding>
-                <element signature="e#0#25#0" expanded="true" />
+                <element signature="e#0#13#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -55,8 +63,9 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/rearrange.py" />
         <option value="$PROJECT_DIR$/dictionary_words.py" />
+        <option value="$PROJECT_DIR$/rearrange.py" />
+        <option value="$PROJECT_DIR$/histogram.py" />
       </list>
     </option>
   </component>
@@ -118,7 +127,7 @@
     <property name="FullScreen" value="true" />
     <property name="SearchEverywhereHistoryKey" value="ter&#9;ACTION&#9;ActivateTerminalToolWindow" />
   </component>
-  <component name="RunManager" selected="Python.dictionary_words">
+  <component name="RunManager" selected="Python.histogram">
     <configuration default="false" name="rearrange" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -149,6 +158,23 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="CS-2_TweetGenerator" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/dictionary_words.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="histogram" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="CS-2_TweetGenerator" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/histogram.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -287,14 +313,16 @@
       <option name="USE_KEYWORD" value="false" />
       <method />
     </configuration>
-    <list size="2">
+    <list size="3">
       <item index="0" class="java.lang.String" itemvalue="Python.rearrange" />
       <item index="1" class="java.lang.String" itemvalue="Python.dictionary_words" />
+      <item index="2" class="java.lang.String" itemvalue="Python.histogram" />
     </list>
     <recent_temporary>
-      <list size="2">
-        <item index="0" class="java.lang.String" itemvalue="Python.dictionary_words" />
-        <item index="1" class="java.lang.String" itemvalue="Python.rearrange" />
+      <list size="3">
+        <item index="0" class="java.lang.String" itemvalue="Python.histogram" />
+        <item index="1" class="java.lang.String" itemvalue="Python.dictionary_words" />
+        <item index="2" class="java.lang.String" itemvalue="Python.rearrange" />
       </list>
     </recent_temporary>
   </component>
@@ -357,10 +385,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#24#37#0" expanded="true" />
-            <marker date="1505670746000" expanded="true" signature="234:2085" ph="..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -368,9 +393,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -378,10 +401,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="555">
           <caret line="38" column="43" selection-start-line="38" selection-start-column="43" selection-end-line="38" selection-end-column="43" />
-          <folding>
-            <element signature="e#24#37#0" expanded="true" />
-            <marker date="1505670746000" expanded="true" signature="234:2085" ph="..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -389,30 +409,32 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="7" column="14" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
-          <folding>
-            <element signature="e#24#37#0" expanded="true" />
-            <marker date="1505670746000" expanded="true" signature="234:2085" ph="..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/rearrange.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="377">
-          <caret line="19" column="34" selection-start-line="13" selection-start-column="4" selection-end-line="19" selection-end-column="34" />
-          <folding>
-            <element signature="e#24#37#0" expanded="true" />
-            <marker date="1505670746000" expanded="true" signature="234:2085" ph="..." />
-          </folding>
+        <state relative-caret-position="30">
+          <caret line="2" column="10" selection-start-line="2" selection-start-column="10" selection-end-line="2" selection-end-column="10" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/dictionary_words.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="564">
-          <caret line="36" column="28" selection-start-line="36" selection-start-column="28" selection-end-line="36" selection-end-column="28" />
+        <state relative-caret-position="30">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="3" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/histogram.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-384">
+          <caret line="12" column="17" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
           <folding>
-            <element signature="e#0#25#0" expanded="true" />
+            <element signature="e#0#13#0" expanded="true" />
           </folding>
         </state>
       </provider>

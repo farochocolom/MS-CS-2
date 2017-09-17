@@ -41,11 +41,18 @@ def unique_words(word_list):
     return len(word_list)
 
 
-histogram("/Users/Specialist/Desktop/GulliversTravels.txt")
 
-# import re, time
-# from collections import Counter
-#
+def frequency(word, histogram):
+    word_dict = dict(histogram)
+    print(word_dict[word])
+
+
+
+my_histogram = histogram("/Users/Specialist/Desktop/GulliversTravels.txt")
+
+frequency("them", my_histogram)
+
+
 # startTime = time.time()
 # file = open('/Users/Specialist/Downloads/Ulysses_NT.txt', 'r')
 #
