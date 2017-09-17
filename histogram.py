@@ -29,8 +29,8 @@ def histogram(source_text):
     # elmax = counts.most_common(100)
 
     print(time.time() - start_time)
-
-    print(sorted_word_dict)
+    if __name__ == "__main__":
+        print(sorted_word_dict)
     return sorted_word_dict
 
 
@@ -48,8 +48,9 @@ def frequency(word, histogram):
 
 my_histogram = histogram("/Users/Specialist/Desktop/GulliversTravels.txt")
 # my_histogram = histogram("/Users/Specialist/Desktop/TheScienceOfVocalPower.txt")
+if __name__ == "__main__":
+    frequency("the", my_histogram)
 
-frequency("the", my_histogram)
-file_to_write = open("/Users/Specialist/Documents/Code/Makeschool/CS-2_TweetGenerator/output.txt", "w")
-for x in my_histogram:
-    file_to_write.write(x[0] + " " + str(x[1]) + "\n")
+    file_to_write = open("/Users/Specialist/Documents/Code/Makeschool/CS-2_TweetGenerator/output.txt", "w")
+    for x in my_histogram:
+        file_to_write.write(x[0] + " " + str(x[1]) + "\n")
