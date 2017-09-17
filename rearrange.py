@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import random
 import sys
+import time
 
 wordList = sys.argv
 del wordList[0]
@@ -11,21 +12,14 @@ sentence = " ".join(wordList)
 print(sentence)
 
 def random_python_quote(words):
+    startTime = time.time()
     localWords = words
     finalWordList = []
     for word in range(0, len(words)):
         rand_index = random.randint(0, len(localWords) - 1)
-        finalWordList.append(localWords[rand_index])
-        localWords.pop(rand_index)
+        finalWordList.append(localWords.pop(rand_index))
+    print(time.time() - startTime)
     return " ".join(finalWordList)
-
-# def get_removed_element_at_index(words, index):
-
-
-#
-# if __name__ == '__main__':
-#     quote = random_python_quote()
-#     print quote
 
 
 print(random_python_quote(wordList))
