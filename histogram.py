@@ -50,3 +50,6 @@ my_histogram = histogram("/Users/Specialist/Desktop/GulliversTravels.txt")
 # my_histogram = histogram("/Users/Specialist/Desktop/TheScienceOfVocalPower.txt")
 
 frequency("the", my_histogram)
+file_to_write = open("/Users/Specialist/Documents/Code/Makeschool/CS-2_TweetGenerator/output.txt", "w")
+for x in my_histogram:
+    file_to_write.write(x[0] + " " + str(x[1]) + "\n")
