@@ -39,18 +39,18 @@ def unique_words(word_list):
 
 
 def frequency(word, histogram):
-    start_time = time.time()
+    # start_time = time.time()
     print([x[1] for x in histogram if x[0] == word])
-    print(time.time() - start_time)
+    # print(time.time() - start_time)
     # word_dict = dict(histogram)
     # print(word_dict[word])
 
 
-my_histogram = histogram("/Users/Specialist/Desktop/GulliversTravels.txt")
-# my_histogram = histogram("/Users/Specialist/Desktop/TheScienceOfVocalPower.txt")
+# my_histogram = histogram("/Users/Specialist/Desktop/GulliversTravels.txt")
+my_histogram = histogram("/Users/Specialist/Desktop/TheScienceOfVocalPower.txt")
 if __name__ == "__main__":
     frequency("the", my_histogram)
 
-    file_to_write = open("/Users/Specialist/Documents/Code/Makeschool/CS-2_TweetGenerator/output.txt", "w")
+    file_to_write = open("/Users/Specialist/Documents/Code/Makeschool/CS-2_TweetGenerator/small_output.txt", "w")
     for x in my_histogram:
         file_to_write.write(x[0] + " " + str(x[1]) + "\n")
