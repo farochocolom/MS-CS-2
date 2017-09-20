@@ -18,7 +18,7 @@ def get_random_word(word_file):
     # rand_index = random.randint(0, len(word_list) - 1)
     # print(word_list[rand_index])
 
-
+@profile
 def sampling(word_file, num):
     word_list = word_file.split()
     new_word_list = []
@@ -52,6 +52,6 @@ def sampling(word_file, num):
     print(sorted_word_dict)
     # print(histogram.frequency())
 
-sampling(file, 10000)
+sampling(file, 900000)
 
 # histogram.histogram()
