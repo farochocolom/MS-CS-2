@@ -44,6 +44,34 @@ def histogram_list_of_lists(word_list):
 
     print(list_of_lists)
 
+def histogram_list_of_count(word_list):
+    new_word_list = []
+    count_list = []
+
+    for word in word_list:
+        if word in new_word_list:
+            word_index = new_word_list.index(word)
+            new_word_list[word_index + 1] += 1
+        else:
+            new_word_list.append(word)
+            new_word_list.append(0)
+
+    for x in range(1, len(new_word_list), 2):
+        if new_word_list[x] in count_list:
+            count_index = count_list.index(new_word_list[x])
+            count_word_list = count_list[count_index+1]
+            word_list_index = count_list.index(count_word_list)
+            # print(word_list_index)
+            # print(word_index)
+            count_list[word_list_index].append(new_word_list[x-1])
+            # count_list.insert(x+1, [new_word_list[x-1]])
+        else:
+            count_list.append(new_word_list[x])
+            count_list.append([new_word_list[x-1]])
+
+    print(count_list)
+    # print(len(count_list))
+
 
 def unique_words(word_list):
     return len(word_list)
@@ -59,7 +87,8 @@ def frequency(word, histogram):
 file = process_file("/Users/Specialist/Desktop/GulliversTravels.txt")
 
 # my_histogram = histogram_dict(file)
-histogram_list_of_lists(file)
+# histogram_list_of_lists(file)
+histogram_list_of_count(file)
 # my_histogram = histogram("/Users/Specialist/Desktop/TheScienceOfVocalPower.txt")
 # if __name__ == "__main__":
 #     frequency("the", my_histogram)
