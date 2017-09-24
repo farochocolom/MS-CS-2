@@ -5,16 +5,16 @@ from collections import Counter
 from operator import itemgetter
 
 
-def histogram(source_text):
-    start_time = time.time()
+def process_file(source_text):
     fh = open(source_text, "r")
     file = fh.read().lower()
-    file = re.sub('[^a-z\ \']+', " ", file)
+    file = re.sub('[^a-z\']+', " ", file)
     word_list = file.split()
+    return word_list
+
+def histogram_dict(word_list):
 
     word_dict = {}
-    # word_dict = {word: 1 if word in word_list else value+1 for word, value in word_list}
-    # word_tuple_list = []
 
     for word in word_list:
         if word in word_dict:
@@ -23,15 +23,26 @@ def histogram(source_text):
             word_dict[word] = 1
 
 
-    # sorted_word_dict = sorted(word_dict.items(), key=lambda word_tuple: word_tuple[1], reverse=True)
-    sorted_word_dict = sorted(word_dict.items(), key=itemgetter(1), reverse=True)
-    # counts = Counter(wordList)
-    # elmax = counts.most_common(100)
+    return word_dict
 
-    print(time.time() - start_time)
-    if __name__ == "__main__":
-        print(sorted_word_dict)
-    return sorted_word_dict
+
+def histogram_list_of_lists(word_list):
+
+    new_word_list = []
+    list_of_lists = []
+
+    for word in word_list:
+        if word in new_word_list:
+            word_index = new_word_list.index(word)
+            new_word_list[word_index + 1] += 1
+        else:
+            new_word_list.append(word)
+            new_word_list.append(0)
+
+    for x in range(0, len(new_word_list), 2):
+        list_of_lists.append([new_word_list[x], new_word_list[x+1]])
+
+    print(list_of_lists)
 
 
 def unique_words(word_list):
@@ -45,12 +56,15 @@ def frequency(word, histogram):
     # word_dict = dict(histogram)
     # print(word_dict[word])
 
+file = process_file("/Users/Specialist/Desktop/GulliversTravels.txt")
 
-# my_histogram = histogram("/Users/Specialist/Desktop/GulliversTravels.txt")
-my_histogram = histogram("/Users/Specialist/Desktop/TheScienceOfVocalPower.txt")
-if __name__ == "__main__":
-    frequency("the", my_histogram)
-
-    file_to_write = open("/Users/Specialist/Documents/Code/Makeschool/CS-2_TweetGenerator/small_output.txt", "w")
-    for x in my_histogram:
-        file_to_write.write(x[0] + " " + str(x[1]) + "\n")
+# my_histogram = histogram_dict(file)
+histogram_list_of_lists(file)
+# my_histogram = histogram("/Users/Specialist/Desktop/TheScienceOfVocalPower.txt")
+# if __name__ == "__main__":
+#     frequency("the", my_histogram)
+#
+#     # file_to_write = open("/Users/Specialist/Documents/Code/Makeschool/CS-2_TweetGenerator/small_output.txt", "w")
+#     file_to_write = open("/Users/Specialist/Documents/Code/Makeschool/CS-2_TweetGenerator/output.txt", "w")
+#     for x in my_histogram:
+#         file_to_write.write(x[0] + " " + str(x[1]) + "\n")
