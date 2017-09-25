@@ -42,7 +42,7 @@ def histogram_list_of_lists(word_list):
     for x in range(0, len(new_word_list), 2):
         list_of_lists.append([new_word_list[x], new_word_list[x+1]])
 
-    print(list_of_lists)
+    return list_of_lists
 
 def histogram_list_of_count(word_list):
     new_word_list = []
@@ -69,8 +69,7 @@ def histogram_list_of_count(word_list):
             count_list.append(new_word_list[x])
             count_list.append([new_word_list[x-1]])
 
-    print(count_list)
-    # print(len(count_list))
+    return count_list
 
 
 def unique_words(word_list):
@@ -78,22 +77,18 @@ def unique_words(word_list):
 
 
 def frequency(word, histogram):
-    # start_time = time.time()
     print([x[1] for x in histogram if x[0] == word])
-    # print(time.time() - start_time)
-    # word_dict = dict(histogram)
-    # print(word_dict[word])
 
-file = process_file("/Users/Specialist/Desktop/GulliversTravels.txt")
 
 # my_histogram = histogram_dict(file)
-# histogram_list_of_lists(file)
-histogram_list_of_count(file)
+
+# histogram_list_of_count(file)
 # my_histogram = histogram("/Users/Specialist/Desktop/TheScienceOfVocalPower.txt")
-# if __name__ == "__main__":
-#     frequency("the", my_histogram)
-#
-#     # file_to_write = open("/Users/Specialist/Documents/Code/Makeschool/CS-2_TweetGenerator/small_output.txt", "w")
-#     file_to_write = open("/Users/Specialist/Documents/Code/Makeschool/CS-2_TweetGenerator/output.txt", "w")
-#     for x in my_histogram:
-#         file_to_write.write(x[0] + " " + str(x[1]) + "\n")
+if __name__ == "__main__":
+    file = process_file("/Users/Specialist/Desktop/GulliversTravels.txt")
+    my_histogram = histogram_dict(file)
+    # histogram_list_of_lists(file)
+    # file_to_write = open("/Users/Specialist/Documents/Code/Makeschool/CS-2_TweetGenerator/small_output.txt", "w")
+    file_to_write = open("/Users/Specialist/Documents/Code/Makeschool/CS-2_TweetGenerator/output.txt", "w")
+    for x in my_histogram:
+        file_to_write.write(x[0] + " " + str(x[1]) + "\n")
