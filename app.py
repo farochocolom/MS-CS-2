@@ -4,7 +4,7 @@ import stochastic_sampling
 import os
 app = Flask(__name__)
 
-@app.route('/sentence')
+@app.route('/')
 def hello_world():
     dirpath = os.getcwd()
     word_file = stochastic_sampling.process_histogram_without_numbers(
@@ -14,7 +14,7 @@ def hello_world():
 
     return render_template('index.html', sentence=sentence)
 
-@app.route('/sentence/<int:num>')
+@app.route('/<int:num>')
 def sentence_with_num_of_words(num):
     dirpath = os.getcwd()
     word_file = stochastic_sampling.process_histogram_without_numbers(
