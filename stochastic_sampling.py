@@ -82,7 +82,6 @@ def create_dict_with_weighting_range_from_word_list(word_list):
 
 
 def sample(num, word_file):
-
     word_list = []
 
     for _ in range(num):
@@ -92,10 +91,19 @@ def sample(num, word_file):
     return histogram.histogram_dict(word_list)
 
 
+def create_random_sentence(num, words):
+    local_words = words
+    final_word_list = []
+    for _ in range(0, num):
+        rand_index = random.randint(0, len(local_words) - 1)
+        final_word_list.append(local_words[rand_index])
+        local_words.pop(rand_index)
 
-test_histogram = process_histogram_with_numbers("/Users/Specialist/Documents/Code/Makeschool/CS-2_TweetGenerator/small_word_file.txt")
-# create_list_with_weighting_range_from_word_list(histogram)
-weighting_sample = create_dict_with_weighting_range_from_word_list(test_histogram)
-print(weighting_sample)
+    return " ".join(final_word_list)
 
-print(sample(100000, weighting_sample))
+
+if __name__ == "__main__":
+    test_histogram = process_histogram_with_numbers("/Users/Specialist/Documents/Code/Makeschool/CS-2_TweetGenerator/output.txt")
+    dictionary = create_dict_with_weighting_range_from_word_list(test_histogram)
+    print(sample(10000,dictionary))
+

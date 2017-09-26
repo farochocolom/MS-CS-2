@@ -25,6 +25,20 @@ def histogram_dict(word_list):
 
     return word_dict
 
+def histogram_list_of_tuples(word_list):
+
+    word_dict = {}
+
+    for word in word_list:
+        if word in word_dict:
+            word_dict[word] += 1
+        else:
+            word_dict[word] = 1
+
+    sorted_word_dict = sorted(word_dict.items(), key=itemgetter(1), reverse=True)
+
+    return sorted_word_dict
+
 
 def histogram_list_of_lists(word_list):
 
@@ -86,7 +100,9 @@ def frequency(word, histogram):
 # my_histogram = histogram("/Users/Specialist/Desktop/TheScienceOfVocalPower.txt")
 if __name__ == "__main__":
     file = process_file("/Users/Specialist/Desktop/GulliversTravels.txt")
-    my_histogram = histogram_dict(file)
+    my_histogram = histogram_list_of_tuples(file)
+
+    print(my_histogram)
     # histogram_list_of_lists(file)
     # file_to_write = open("/Users/Specialist/Documents/Code/Makeschool/CS-2_TweetGenerator/small_output.txt", "w")
     file_to_write = open("/Users/Specialist/Documents/Code/Makeschool/CS-2_TweetGenerator/output.txt", "w")

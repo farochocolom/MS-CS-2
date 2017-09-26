@@ -4,34 +4,32 @@ import random
 import time
 
 
-fh = open("/usr/share/dict/words","r")
-file = fh.read()
-sentence = ""
-wordList = file.split()
-# print(wordList)
-# print(len(wordList))
-# print(sample(wordList, 5))
+def process_file(word_file):
+    fh = open(word_file, "r")
+    file = fh.read()
+    wordList = file.split()
+    return  wordList
 
 
-def create_random_sentence(num, words=wordList):
-    startTime = time.time()
-
-    localWords = words
-    finalWordList = []
+def create_random_sentence(num, words):
+    local_words = words
+    final_word_list = []
     for word in range(0, num):
-        rand_index = random.randint(0, len(localWords) - 1)
-        finalWordList.append(localWords[rand_index])
-        localWords.pop(rand_index)
+        rand_index = random.randint(0, len(local_words) - 1)
+        final_word_list.append(local_words[rand_index])
+        local_words.pop(rand_index)
 
-    print(time.time() - startTime)
-    return " ".join(finalWordList)
-
+    return " ".join(final_word_list)
 
 
-
-def process(wordlist):
+def create_sentence(wordlist):
     print(" ".join(wordlist))
 
-userIn = int(input("Enter a number: "))
 
-print(create_random_sentence(userIn))
+if __name__ == "__main__":
+    process_file("/usr/share/dict/words")
+    userIn = int(input("Enter a number: "))
+
+    process_file()
+
+    print(create_random_sentence(userIn))
