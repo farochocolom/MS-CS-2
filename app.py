@@ -13,3 +13,6 @@ def create_sentence():
 
     sentence = stochastic_sampling.create_random_sentence(10, word_file)
     return sentence
+
+if __name__ == '__main__':
+    app.run()
