@@ -1,6 +1,4 @@
 import histogram
-# import rearrange
-# import dictionary_words
 import sys
 import re
 import random
@@ -47,14 +45,8 @@ def get_total_word_count(word_list):
 
 def create_list_with_weighting_range_from_word_list(word_list):
     list_with_weight_percentages = []
-    list_with_weight_ranges = []
     total_words = get_total_word_count(word_list)
     weight_range = 0
-
-    # for x in range(0,len(word_list), 2):
-    #     word_percentage = int(word_list[x+1])/total_words
-    #     list_with_weight_percentages.append([word_list[x], word_percentage])
-
     for x in range(0, len(word_list), 2):
         word_percentage = int(word_list[x + 1]) / total_words
         weight_range += word_percentage
@@ -67,10 +59,6 @@ def create_dict_with_weighting_range_from_word_list(word_list):
     dict_with_weight_percentages = {}
     total_words = get_total_word_count(word_list)
     weight_range = 0
-
-    # for x in range(0,len(word_list), 2):
-    #     word_percentage = int(word_list[x+1])/total_words
-    #     list_with_weight_percentages.append([word_list[x], word_percentage])
 
     for x in range(0, len(word_list), 2):
         word_percentage = int(word_list[x + 1]) / total_words

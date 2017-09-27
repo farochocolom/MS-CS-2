@@ -4,6 +4,7 @@ import stochastic_sampling
 import os
 app = Flask(__name__)
 
+
 @app.route('/')
 def hello_world():
     dirpath = os.getcwd()
@@ -14,6 +15,7 @@ def hello_world():
 
     return render_template('index.html', sentence=sentence)
 
+
 @app.route('/<int:num>')
 def sentence_with_num_of_words(num):
     dirpath = os.getcwd()
@@ -23,7 +25,6 @@ def sentence_with_num_of_words(num):
     sentence = stochastic_sampling.create_random_sentence(num, word_file)
 
     return render_template('index.html', sentence=sentence)
-
 
 
 if __name__ == '__main__':

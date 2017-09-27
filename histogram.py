@@ -1,16 +1,14 @@
-import random
-import time
 import re
-from collections import Counter
 from operator import itemgetter
 
 
 def process_file(source_text):
-    fh = open(source_text, "r")
-    file = fh.read().lower()
-    file = re.sub('[^a-z\']+', " ", file)
-    word_list = file.split()
+    file_to_read = open(source_text, "r")
+    read_file = file_to_read.read().lower()
+    read_file = re.sub('[^a-z\']+', " ", file)
+    word_list = read_file.split()
     return word_list
+
 
 def histogram_dict(word_list):
 
@@ -22,8 +20,8 @@ def histogram_dict(word_list):
         else:
             word_dict[word] = 1
 
-
     return word_dict
+
 
 def histogram_list_of_tuples(word_list):
 
@@ -58,6 +56,7 @@ def histogram_list_of_lists(word_list):
 
     return list_of_lists
 
+
 def histogram_list_of_count(word_list):
     new_word_list = []
     count_list = []
@@ -86,7 +85,7 @@ def histogram_list_of_count(word_list):
     return count_list
 
 
-def unique_words(word_list):
+def unique_words_count(word_list):
     return len(word_list)
 
 
