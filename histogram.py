@@ -5,7 +5,7 @@ from operator import itemgetter
 def process_file(source_text):
     file_to_read = open(source_text, "r")
     read_file = file_to_read.read().lower()
-    read_file = re.sub('[^a-z\']+', " ", file)
+    read_file = re.sub('[^a-z\']+', " ", read_file)
     word_list = read_file.split()
     return word_list
 
@@ -100,6 +100,7 @@ def frequency(word, histogram):
 if __name__ == "__main__":
     file = process_file("/Users/Specialist/Desktop/GulliversTravels.txt")
     my_histogram = histogram_list_of_tuples(file)
+    frequency('and', my_histogram)
 
     print(my_histogram)
     # histogram_list_of_lists(file)

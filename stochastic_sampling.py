@@ -1,5 +1,5 @@
 import histogram
-import sys
+import os
 import re
 import random
 from operator import itemgetter
@@ -55,7 +55,7 @@ def create_list_with_weighting_range_from_word_list(word_list):
     return list_with_weight_percentages
 
 
-def create_dict_with_weighting_range_from_word_list(word_list):
+def create_weighted_sorted_tuple_list(word_list):
     dict_with_weight_percentages = {}
     total_words = get_total_word_count(word_list)
     weight_range = 0
@@ -91,7 +91,8 @@ def create_random_sentence(num, words):
 
 
 if __name__ == "__main__":
-    test_histogram = process_histogram_with_numbers("/Users/Specialist/Documents/Code/Makeschool/CS-2_TweetGenerator/output.txt")
-    dictionary = create_dict_with_weighting_range_from_word_list(test_histogram)
+    dirpath = os.getcwd()
+    test_histogram = process_histogram_with_numbers(dirpath+"/output.txt")
+    dictionary = create_weighted_sorted_tuple_list(test_histogram)
     print(sample(10000,dictionary))
 
