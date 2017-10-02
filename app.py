@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello_world():
-
+    dirpath = os.getcwd()
     word_file = stochastic_sampling.process_histogram_without_numbers(
         dirpath+"/output.txt")
 
