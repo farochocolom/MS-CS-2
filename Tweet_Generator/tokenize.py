@@ -1,13 +1,13 @@
+import cleanup
 
 
-def histogram_dict(word_list):
+def tokenize(source_text):
+    read_file = cleanup.clean_file(source_text)
+    word_list = read_file.split()
+    return word_list
 
-    word_dict = {}
 
-    for word in word_list:
-        if word in word_dict:
-            word_dict[word] += 1
-        else:
-            word_dict[word] = 1
-
-    return word_dict
+if __name__ == '__main__':
+    file = sys.argv[1]
+    clean = tokenize(file)
+    print(clean)

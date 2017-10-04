@@ -1,5 +1,6 @@
 from __future__ import division, print_function
 
+
 class Dictogram(dict):
 
     def __init__(self, iterable=None):
@@ -9,6 +10,7 @@ class Dictogram(dict):
         self.tokens = 0  # the total count of all item tokens in this histogram
         if iterable:
             self.update(iterable)
+            self.markov_chain(iterable)
 
     def update(self, iterable):
         """Update this histogram with the items in the given iterable"""
@@ -32,3 +34,14 @@ class Dictogram(dict):
             return 0
 
         pass
+
+    def markov_chain(self, iterable):
+        for x in range(len(iterable)):
+            # TODO: increment item count
+            if iterable[x] in self:
+                self.tokens += 1
+                self[iterable[x]].append(iterable[x+1])
+            else:
+                self.tokens += 1
+                self.types += 1
+                self[iterable[x]] = [iterable[x+1]]

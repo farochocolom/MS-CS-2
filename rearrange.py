@@ -2,6 +2,7 @@
 import random
 import sys
 import time
+from math import floor
 
 wordList = sys.argv
 del wordList[0]
@@ -22,7 +23,22 @@ def random_python_quote(words):
     return " ".join(finalWordList)
 
 
-print(random_python_quote(wordList))
+def fisher_yates(word_file):
+    m = len(word_file)
+
+    while m:
+        i = int(floor(random.random() * m))
+        print(i)
+        m -= 1
+
+        t = word_file[i]
+        word_file[m] = word_file[i]
+        word_file[i] = t
+
+    return " ".join(word_file)
+
+
+print(fisher_yates(wordList))
 
 # TODO
 # String reversals: reverse words, sentences
