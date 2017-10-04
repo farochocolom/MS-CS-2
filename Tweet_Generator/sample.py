@@ -63,7 +63,6 @@ def create_weighted_sorted_tuple_list(word_list):
         word_percentage = int(word_list[x + 1]) / total_words
         weight_range += word_percentage
         dict_with_weight_percentages[weight_range] = word_list[x]
-
     sorted_word_dict = sorted(dict_with_weight_percentages.items(), key=itemgetter(0))
     return sorted_word_dict
 
@@ -82,4 +81,4 @@ if __name__ == "__main__":
     dirpath = os.getcwd()
     test_histogram = process_histogram_with_numbers(dirpath+"/output.txt")
     dictionary = create_weighted_sorted_tuple_list(test_histogram)
-    print(sample(10000,dictionary))
+    print(sample(10000, dictionary))

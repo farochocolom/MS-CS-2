@@ -31,7 +31,8 @@ def markov_chain(words_list):
                 word_dict[current_word] = dict(ChainMap(word_dict[current_word], {next_word: generated_histogram[next_word]}))
             else:
                 word_dict[current_word] = {next_word: generated_histogram[next_word]}
-
+    # print(generated_histogram.tokens)
+    # print(generated_histogram.types)
     return word_dict
 
 #
