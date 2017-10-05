@@ -1,25 +1,13 @@
 from pprint import pprint
-from Tweet_Generator import tokenize
+from Tweet_Generator import tokenize, sample
 from Tweet_Generator.histograms import Dictogram
 from collections import ChainMap
 
 fh = tokenize.tokenize('./../SoP.txt')
-print(fh)
-
-# gen_list = Dictogram(fh)
-# print(gen_list)
-#
-def generate_word_list(words_list):
-    follow_list = []
-    for x in range(len(words_list)):
-        if x + 1 < len(words_list):
-            follow_list.append(words_list[x+1])
-
-    return follow_list
 
 
 def markov_chain(words_list):
-    word_dict = {}
+    word_dict = Dictogram()
     generated_histogram = Dictogram()
     for x in range(len(words_list)):
         current_word = words_list[x]
@@ -31,9 +19,20 @@ def markov_chain(words_list):
                 word_dict[current_word] = dict(ChainMap(word_dict[current_word], {next_word: generated_histogram[next_word]}))
             else:
                 word_dict[current_word] = {next_word: generated_histogram[next_word]}
-    # print(generated_histogram.tokens)
-    # print(generated_histogram.types)
     return word_dict
 
-#
-pprint(markov_chain(fh))
+
+def weighted_markov(markov_dict):
+    # dictionize = dict(markov_dict)
+    pprint(markov_dict.tokens)
+
+    for markov in markov_dict:
+        histogram = markov_dict[markov]
+        weighted_dicts = sample.create_weighted_sorted_tuple_list_markov(histogram)
+        markov_dict[markov] = weighted_dicts
+
+    pprint(markov_dict)
+
+markov_chain_var = markov_chain(fh)
+weighted_markov(markov_chain_var)
+# pprint(markov_chain_var)

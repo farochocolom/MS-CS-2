@@ -33,9 +33,8 @@ def create_tuplegram(word_list):
         else:
             word_dict[word] = 1
 
-    sorted_word_dict = sorted(word_dict.items(), key=itemgetter(1), reverse=True)
-
-    return sorted_word_dict
+    sort = sorted(word_dict.items(), key=itemgetter(1), reverse=True)
+    return sort
 
 
 def create_listogram(word_list):
@@ -91,14 +90,14 @@ def frequency(word, histogram):
     print([x[1] for x in histogram if x[0] == word])
 
 
-if __name__ == "__main__":
-    # file = process_file("/Users/Specialist/Desktop/TheScienceOfVocalPower.txt")
-    file = process_file("/Users/Specialist/Desktop/GulliversTravels.txt")
-    my_histogram = create_tuplegram(file)
-    frequency('and', my_histogram)
-
-    # histogram_list_of_lists(file)
-    # file_to_write = open("/Users/Specialist/Documents/Code/Makeschool/CS-2_TweetGenerator/small_output.txt", "w")
-    file_to_write = open("/Users/Specialist/Documents/Code/Makeschool/CS-2_TweetGenerator/output.txt", "w")
-    for x in my_histogram:
-        file_to_write.write(x[0] + " " + str(x[1]) + "\n")
+# if __name__ == "__main__":
+#     # file = process_file("/Users/Specialist/Desktop/TheScienceOfVocalPower.txt")
+#     file = process_file("/Users/Specialist/Desktop/GulliversTravels.txt")
+#     my_histogram = create_tuplegram(file)
+#     frequency('and', my_histogram)
+#
+#     # histogram_list_of_lists(file)
+#     # file_to_write = open("/Users/Specialist/Documents/Code/Makeschool/CS-2_TweetGenerator/small_output.txt", "w")
+#     file_to_write = open("/Users/Specialist/Documents/Code/Makeschool/CS-2_TweetGenerator/output.txt", "w")
+#     for x in my_histogram:
+#         file_to_write.write(x[0] + " " + str(x[1]) + "\n")

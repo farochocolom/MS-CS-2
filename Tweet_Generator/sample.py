@@ -67,6 +67,22 @@ def create_weighted_sorted_tuple_list(word_list):
     return sorted_word_dict
 
 
+def create_weighted_sorted_tuple_list_markov(word_dict):
+    dict_with_weight_percentages = {}
+    total_words = 0
+    weight_range = 0
+
+    for item in word_dict:
+        total_words += word_dict[item]
+
+    for item in word_dict:
+        word_percentage = word_dict[item] / total_words
+        weight_range += word_percentage
+        dict_with_weight_percentages[weight_range] = item
+    sort = sorted(dict_with_weight_percentages.items(), key=itemgetter(0))
+    return sort
+
+
 def sample(num, word_file):
     word_list = []
 
@@ -79,6 +95,6 @@ def sample(num, word_file):
 
 if __name__ == "__main__":
     dirpath = os.getcwd()
-    test_histogram = process_histogram_with_numbers(dirpath+"/output.txt")
+    test_histogram = process_histogram_with_numbers(dirpath+"/../output.txt")
     dictionary = create_weighted_sorted_tuple_list(test_histogram)
-    print(sample(10000, dictionary))
+    print(sample(100, dictionary))
