@@ -2,8 +2,7 @@ from pprint import pprint
 from Tweet_Generator import tokenize, sample
 from Tweet_Generator.histograms import Dictogram
 from collections import ChainMap
-
-fh = tokenize.tokenize('./../SoP.txt')
+import random
 
 
 def markov_chain(words_list):
@@ -23,16 +22,33 @@ def markov_chain(words_list):
 
 
 def weighted_markov(markov_dict):
-    # dictionize = dict(markov_dict)
-    pprint(markov_dict.tokens)
-
     for markov in markov_dict:
         histogram = markov_dict[markov]
         weighted_dicts = sample.create_weighted_sorted_tuple_list_markov(histogram)
         markov_dict[markov] = weighted_dicts
 
-    pprint(markov_dict)
+    return markov_dict
 
-markov_chain_var = markov_chain(fh)
-weighted_markov(markov_chain_var)
-# pprint(markov_chain_var)
+def walk_the_markov(num, weighted_markov_dict):
+    sentence = []
+    current_word = random.choice(list(weighted_markov_dict.keys()))
+    for x in range(num):
+        next_word = ""
+        random_range = random.random()
+        for item in weighted_markov_dict[current_word]:
+            if random_range > float(item[0]):
+                continue
+            else:
+                next_word = item[1]
+        current_word = next_word
+        sentence.append(next_word)
+
+    return " ".join(sentence)
+
+
+if __name__ == "__main__":
+    fh = tokenize.tokenize('./../SoP.txt')
+    markov_chain_var = markov_chain(fh)
+    weighted = weighted_markov(markov_chain_var)
+    walk_the_markov(10, weighted)
+    # pprint(markov_chain_var)
