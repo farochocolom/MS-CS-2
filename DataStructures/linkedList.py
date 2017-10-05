@@ -98,7 +98,7 @@ class LinkedList(object):
             if quality(item):
                 return item
 
-        return "no item that meets the criteria was found"
+        return None
 
 
 def test_linked_list():
@@ -118,14 +118,14 @@ def test_linked_list():
     print('length: ' + str(ll.length()))
     print(ll.items())
 
-    # ll = LinkedList()
-    # ll.append('A')
-    # ll.append('B')
-    # ll.append('C')
-    # assert ll.find(lambda item: item == 'B') == 'B'
-    # assert ll.find(lambda item: item < 'B') == 'A'
-    # assert ll.find(lambda item: item > 'B') == 'C'
-    # assert ll.find(lambda item: item == 'D') is None
+    ll = LinkedList()
+    ll.append('A')
+    ll.append('B')
+    ll.append('C')
+    print(ll.find(lambda item: item == 'B') == 'B')
+    print(ll.find(lambda item: item < 'B') == 'A')
+    print(ll.find(lambda item: item > 'B') == 'C')
+    print(ll.find(lambda item: item == 'D') is None)
 
     # Enable this after implementing delete:
     # print('Deleting items:')
@@ -142,5 +142,3 @@ def test_linked_list():
 
 if __name__ == '__main__':
     test_linked_list()
-
-
