@@ -21,6 +21,7 @@ class LinkedList(object):
         """Initialize this linked list; append the given items, if any"""
         self.head = None
         self.tail = None
+
         if iterable:
             for item in iterable:
                 self.append(item)
@@ -49,18 +50,41 @@ class LinkedList(object):
 
     def length(self):
         """Return the length of this linked list by traversing its nodes"""
-        # TODO: count number of items
-        pass
+        if self.head is None:
+            return 0
+        else:
+            current_node = self.head
+            count = 1
+            while current_node.next is not None:
+                current_node = current_node.next
+                count += 1
+            return count
+
 
     def append(self, item):
         """Insert the given item at the tail of this linked list"""
-        # TODO: append given item
-        pass
+        new_node = Node(item)
+        if self.head == None:
+            self.head = new_node
+            self.tail = new_node
+        else:
+            tmp = self.head
+            while tmp.next != None:
+                tmp = tmp.next
+
+            tmp.next = Node(item)
+            self.tail = Node(item)
 
     def prepend(self, item):
         """Insert the given item at the head of this linked list"""
-        # TODO: prepend given item
-        pass
+        if self.head is None:
+            self.head = Node(item)
+            self.tail = self.head
+        else:
+            tmp = self.head
+            self.head = Node(item)
+            self.head.next = tmp
+
 
     def delete(self, item):
         """Delete the given item from this linked list, or raise ValueError"""
@@ -70,7 +94,11 @@ class LinkedList(object):
     def find(self, quality):
         """Return an item from this linked list satisfying the given quality"""
         # TODO: find item where quality(item) is True
-        pass
+        for item in self.items():
+            if quality(item):
+                return item
+
+        return "no item that meets the criteria was found"
 
 
 def test_linked_list():
@@ -83,10 +111,21 @@ def test_linked_list():
     ll.append('B')
     print(ll)
     ll.append('C')
+    ll.prepend('x')
     print(ll)
     print('head: ' + str(ll.head))
     print('tail: ' + str(ll.tail))
     print('length: ' + str(ll.length()))
+    print(ll.items())
+
+    # ll = LinkedList()
+    # ll.append('A')
+    # ll.append('B')
+    # ll.append('C')
+    # assert ll.find(lambda item: item == 'B') == 'B'
+    # assert ll.find(lambda item: item < 'B') == 'A'
+    # assert ll.find(lambda item: item > 'B') == 'C'
+    # assert ll.find(lambda item: item == 'D') is None
 
     # Enable this after implementing delete:
     # print('Deleting items:')
