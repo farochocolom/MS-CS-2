@@ -60,16 +60,15 @@ class LinkedList(object):
                 count += 1
             return count
 
-
     def append(self, item):
         """Insert the given item at the tail of this linked list"""
         new_node = Node(item)
-        if self.head == None:
+        if self.head is None:
             self.head = new_node
             self.tail = new_node
         else:
             tmp = self.head
-            while tmp.next != None:
+            while tmp.next is not None:
                 tmp = tmp.next
 
             tmp.next = Node(item)
@@ -85,11 +84,50 @@ class LinkedList(object):
             self.head = Node(item)
             self.head.next = tmp
 
-
     def delete(self, item):
         """Delete the given item from this linked list, or raise ValueError"""
         # TODO: find given item and delete if found
-        pass
+        current = self.head
+        previous = None
+        found = False
+        while current and found is False:
+            if current.data == item:
+                found = True
+            else:
+                previous = current
+                current = current.next
+        if current is None:
+            raise ValueError("Data not in list")
+
+        if current.next is None:
+            self.tail = previous
+
+        if previous is None:
+            self.head = current.next
+        else:
+            previous.next = current.next
+
+        # if self.head is None:
+        #     raise ValueError("List is empty")
+        #
+        # if self.head.data is item:
+        #     if self.head.next is not None:
+        #         self.head = self.head.next
+        #     else:
+        #         self.head = None
+        #
+        # previous = None
+        # current = self.head
+        #
+        # while current is not None and current.data is not item:
+        #     # if current_node.data is item:
+        #     previous = current
+        #     current = current.next
+        #
+        # if current is None:
+        #     raise ValueError("Item was not found")
+        #
+        # previous.next = current.next
 
     def find(self, quality):
         """Return an item from this linked list satisfying the given quality"""
@@ -99,6 +137,11 @@ class LinkedList(object):
                 return item
 
         return None
+
+    def _find_node(self, item):
+        """Find and return a specific Node"""
+        pass
+
 
 
 def test_linked_list():
@@ -111,33 +154,31 @@ def test_linked_list():
     ll.append('B')
     print(ll)
     ll.append('C')
-    ll.prepend('x')
     print(ll)
     print('head: ' + str(ll.head))
     print('tail: ' + str(ll.tail))
     print('length: ' + str(ll.length()))
     print(ll.items())
 
+    # Enable this after implementing delete:
     ll = LinkedList()
     ll.append('A')
     ll.append('B')
     ll.append('C')
-    print(ll.find(lambda item: item == 'B') == 'B')
-    print(ll.find(lambda item: item < 'B') == 'A')
-    print(ll.find(lambda item: item > 'B') == 'C')
-    print(ll.find(lambda item: item == 'D') is None)
-
-    # Enable this after implementing delete:
-    # print('Deleting items:')
-    # ll.delete('B')
-    # print(ll)
-    # ll.delete('C')
-    # print(ll)
-    # ll.delete('A')
-    # print(ll)
-    # print('head: ' + str(ll.head))
-    # print('tail: ' + str(ll.tail))
-    # print('length: ' + str(ll.length()))
+    ll.delete('A')
+    print(ll)
+    print(ll.head.data == 'B')
+    print(ll.tail.data == 'C')
+    ll.delete('C')
+    print(ll)
+    print(ll.head.data == 'B')
+    print(ll.tail.data == 'B')
+    ll.delete('B')
+    print(ll)
+    print(ll.head is None)
+    print(ll.tail is None)
+    # with self.assertRaises(ValueError):
+    #     ll.delete('D')
 
 
 if __name__ == '__main__':

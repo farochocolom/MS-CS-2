@@ -29,6 +29,7 @@ def weighted_markov(markov_dict):
 
     return markov_dict
 
+
 def walk_the_markov(num, weighted_markov_dict):
     sentence = []
     current_word = random.choice(list(weighted_markov_dict.keys()))
