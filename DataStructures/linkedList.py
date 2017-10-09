@@ -35,6 +35,26 @@ class LinkedList(object):
         """Return a string representation of this linked list"""
         return 'LinkedList({})'.format(repr(self.items()))
 
+    def __iter__(self):
+        # Remember, self is our UnorderedList.
+        # In order to get to the first Node, we must do
+        current = self.head
+        # and then, until we have reached the end:
+        while current is not None:
+            yield current
+            # in order to get from one Node to the next one:
+            current = current.next
+
+    # def __next__(self):
+    #     fib = self.a
+    #     if fib > self.tail:
+    #         raise StopIteration
+    #     self.a, self.b = self.b, self.a + self.b
+    #     return fib
+
+    def next(self):
+        return self.__next__()
+
     def items(self):
         """Return a list of all items in this linked list"""
         result = []
@@ -107,28 +127,6 @@ class LinkedList(object):
         else:
             previous.next = current.next
 
-        # if self.head is None:
-        #     raise ValueError("List is empty")
-        #
-        # if self.head.data is item:
-        #     if self.head.next is not None:
-        #         self.head = self.head.next
-        #     else:
-        #         self.head = None
-        #
-        # previous = None
-        # current = self.head
-        #
-        # while current is not None and current.data is not item:
-        #     # if current_node.data is item:
-        #     previous = current
-        #     current = current.next
-        #
-        # if current is None:
-        #     raise ValueError("Item was not found")
-        #
-        # previous.next = current.next
-
     def find(self, quality):
         """Return an item from this linked list satisfying the given quality"""
         # TODO: find item where quality(item) is True
@@ -159,6 +157,9 @@ def test_linked_list():
     print('tail: ' + str(ll.tail))
     print('length: ' + str(ll.length()))
     print(ll.items())
+
+    for thing in ll:
+        print("things: " + str(thing))
 
     # Enable this after implementing delete:
     ll = LinkedList()
