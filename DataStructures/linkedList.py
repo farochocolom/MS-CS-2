@@ -136,11 +136,6 @@ class LinkedList(object):
 
         return None
 
-    def _find_node(self, item):
-        """Find and return a specific Node"""
-        pass
-
-
 
 def test_linked_list():
     ll = LinkedList()

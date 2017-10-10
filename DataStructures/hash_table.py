@@ -64,9 +64,9 @@ class HashTable(object):
         """Return the value associated with the given key, or raise KeyError"""
         key_hash = self._bucket_index(key)
         if self.buckets[key_hash] is not None:
-            for pair in self.buckets[key_hash]:
-                if pair[0] == key:
-                    return pair[1]
+            node = self.buckets[key_hash]
+            return node.head.data[1]
+
         return None
 
     def set(self, key, value):
