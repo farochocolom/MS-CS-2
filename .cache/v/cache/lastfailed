@@ -1,1 +1,11 @@
-{}
+{
+  "DataStructures/hash_table.py::test_hash_table": true, 
+  "DataStructures/test_hashtable.py::HashTableTest::test_contains": true, 
+  "DataStructures/test_hashtable.py::HashTableTest::test_delete": true, 
+  "DataStructures/test_hashtable.py::HashTableTest::test_items": true, 
+  "DataStructures/test_hashtable.py::HashTableTest::test_keys": true, 
+  "DataStructures/test_hashtable.py::HashTableTest::test_length": true, 
+  "DataStructures/test_hashtable.py::HashTableTest::test_set_and_get": true, 
+  "DataStructures/test_hashtable.py::HashTableTest::test_set_twice_and_get": true, 
+  "DataStructures/test_hashtable.py::HashTableTest::test_values": true
+}

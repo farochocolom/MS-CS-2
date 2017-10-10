@@ -34,7 +34,13 @@ class HashTable(object):
     def values(self):
         """Return a list of all values in this hash table"""
         # TODO: Collect all values in each of the buckets
-        pass
+        all_values = []
+        for bucket in self.buckets:
+            print("bucket:" + str(bucket))
+            for key, value in bucket.items():
+                all_values.append(value)
+                # print("value in values func: " + str(value))
+        return all_values
 
     def items(self):
         """Return a list of all items (key-value pairs) in this hash table"""
@@ -56,13 +62,22 @@ class HashTable(object):
 
     def get(self, key):
         """Return the value associated with the given key, or raise KeyError"""
-        # TODO: Check if the given key exists and return its associated value
-        pass
+        key_hash = self._bucket_index(key)
+        if self.buckets[key_hash] is not None:
+            for pair in self.buckets[key_hash]:
+                if pair[0] == key:
+                    return pair[1]
+        return None
 
     def set(self, key, value):
         """Insert or update the given key with its associated value"""
-        # TODO: Insert or update the given key-value entry into a bucket
-        pass
+        key_hash = self._bucket_index(key)
+        key_value = key, value
+        print(self.buckets[key_hash].is_empty())
+        if self.buckets[key_hash].is_empty():
+            self.buckets[key_hash] = LinkedList([key_value])
+        else:
+            self.buckets[key_hash].append(key_value)
 
     def delete(self, key):
         """Delete the given key from this hash table, or raise KeyError"""
@@ -81,11 +96,12 @@ def test_hash_table():
     print(ht)
     ht.set('X', 10)
     print(ht)
-    print('contains(X): ' + str(ht.contains('X')))
+
+    # print('contains(X): ' + str(ht.contains('X')))
     print('get(I): ' + str(ht.get('I')))
     print('get(V): ' + str(ht.get('V')))
     print('get(X): ' + str(ht.get('X')))
-    print('length: ' + str(ht.length()))
+    # print('length: ' + str(ht.length()))
 
     # Enable this after implementing delete:
     # print('Deleting entries:')

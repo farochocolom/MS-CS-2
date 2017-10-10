@@ -1,4 +1,4 @@
-from hashtable import HashTable
+from hash_table import HashTable
 import unittest
 
 
