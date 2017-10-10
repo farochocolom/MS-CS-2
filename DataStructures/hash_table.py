@@ -18,6 +18,12 @@ class HashTable(object):
         """Return a string representation of this hash table"""
         return 'HashTable({})'.format(repr(self.items()))
 
+    def __iter__(self):
+        current = self.buckets[0]
+        for index in range(0, self.length):
+            yield current
+            current = current[index+1]
+
     def _bucket_index(self, key):
         """Return the bucket index where the given key would be stored"""
         return hash(key) % len(self.buckets)
@@ -60,11 +66,10 @@ class HashTable(object):
 
         if self.buckets[key_hash] is not None:
             node = self.buckets[key_hash]
-            if node.head.data[0] == key:
+            if not node.is_empty() and node.head.data[0] == key:
                 return True
             else:
                 return False
-
 
     def get(self, key):
         """Return the value associated with the given key, or raise KeyError"""
@@ -96,7 +101,6 @@ class HashTable(object):
         self.buckets[key_hash].delete((key, key_to_delete))
 
 
-
 def test_hash_table():
     ht = HashTable()
     print(ht)
@@ -114,6 +118,9 @@ def test_hash_table():
     print('get(V): ' + str(ht.get('V')))
     print('get(X): ' + str(ht.get('X')))
     print('length: ' + str(ht.length()))
+
+    # for item in ht:
+    #     print(item)
 
     # Enable this after implementing delete:
     print('Deleting entries:')

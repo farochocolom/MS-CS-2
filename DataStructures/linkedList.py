@@ -44,17 +44,7 @@ class LinkedList(object):
             yield current
             # in order to get from one Node to the next one:
             current = current.next
-
-    # def __next__(self):
-    #     fib = self.a
-    #     if fib > self.tail:
-    #         raise StopIteration
-    #     self.a, self.b = self.b, self.a + self.b
-    #     return fib
-
-    def next(self):
-        return self.__next__()
-
+            
     def items(self):
         """Return a list of all items in this linked list"""
         result = []
