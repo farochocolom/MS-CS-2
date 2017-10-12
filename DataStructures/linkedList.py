@@ -7,124 +7,124 @@ class Node(object):
 
     def __init__(self, data):
         """Initialize this node with the given data"""
-        self.data = data
-        self.next = None
+        self.data = data    # Set variable, constant time
+        self.next = None    # Set variable, constant time
 
     def __repr__(self):
         """Return a string representation of this node"""
-        return 'Node({})'.format(repr(self.data))
+        return 'Node({})'.format(repr(self.data))  # format string, constant time
 
 
 class LinkedList(object):
 
-    def __init__(self, iterable=None):
+    def __init__(self, iterable=None): # linearˆ2 time
         """Initialize this linked list; append the given items, if any"""
-        self.head = None
-        self.tail = None
+        self.head = None    # Set variable, constant time
+        self.tail = None    # Set variable, constant time
 
-        if iterable:
-            for item in iterable:
-                self.append(item)
+        if iterable:    # check condition, constant time
+            for item in iterable:   # for loop for each item in iterable, linear time
+                self.append(item)   # append to a linked list, linear time
 
-    def __str__(self):
+    def __str__(self):      # constant time
         """Return a formatted string representation of this linked list"""
-        items = ['({})'.format(repr(item)) for item in self.items()]
-        return '[{}]'.format(' -> '.join(items))
+        items = ['({})'.format(repr(item)) for item in self.items()]  # list comprehension, linear time
+        return '[{}]'.format(' -> '.join(items))  # format string, constant time
 
-    def __repr__(self):
+    def __repr__(self):     # constant time
         """Return a string representation of this linked list"""
-        return 'LinkedList({})'.format(repr(self.items()))
+        return 'LinkedList({})'.format(repr(self.items()))  # format string, constant time
 
-    def __iter__(self):
+    def __iter__(self):     #linear time
         # Remember, self is our UnorderedList.
         # In order to get to the first Node, we must do
-        current = self.head
+        current = self.head  # Set variable, constant time
         # and then, until we have reached the end:
-        while current is not None:
-            yield current
+        while current is not None:  # while loop, worst case is O(n)
+            yield current   # create an iterator generator, constant time
             # in order to get from one Node to the next one:
-            current = current.next
-            
-    def items(self):
+            current = current.next  # Set variable, constant time
+
+    def items(self):  # linear time
         """Return a list of all items in this linked list"""
-        result = []
-        current = self.head
-        while current is not None:
-            result.append(current.data)
-            current = current.next
-        return result
+        result = []     # create an empty list, linear time
+        current = self.head     # Set variable, linear time
+        while current is not None:      # while loop, worst case is linear time
+            result.append(current.data)     # append to a list, constant time
+            current = current.next      # Set variable, constant time
+        return result   # return a list, constant time
 
-    def is_empty(self):
+    def is_empty(self):     # constant time
         """Return True if this linked list is empty, or False"""
-        return self.head is None
+        return self.head is None    # comparing head to none and returning a boolean, linear time
 
-    def length(self):
+    def length(self):       # linear time
         """Return the length of this linked list by traversing its nodes"""
-        if self.head is None:
-            return 0
+        if self.head is None:   # comparing head to none, constant time
+            return 0    # returning 0, constant time
         else:
-            current_node = self.head
-            count = 1
-            while current_node.next is not None:
-                current_node = current_node.next
-                count += 1
-            return count
+            current_node = self.head                # set current_node to the head, constant time
+            count = 1                               # set count to 1, constant time
+            while current_node.next is not None:    # iterate until current_node.next is equal to none, linear time
+                current_node = current_node.next    # set current_node to current_node.next, constant time
+                count += 1                          # add one to the count, constant time
+            return count                            # return count, constant time
 
-    def append(self, item):
+    def append(self, item):     # linear time
         """Insert the given item at the tail of this linked list"""
-        new_node = Node(item)
-        if self.head is None:
-            self.head = new_node
-            self.tail = new_node
+        new_node = Node(item)               # set new_node to a new Node instance, constant time
+        if self.head is None:               # comparing head to None, constant time
+            self.head = new_node            # set head to new_node, constant time
+            self.tail = new_node            # set tail to new_node, constant time
         else:
-            tmp = self.head
-            while tmp.next is not None:
-                tmp = tmp.next
+            tmp = self.head                 # set tmp to head, constant time
+            while tmp.next is not None:     # iterate until tmp.next not None, linear time
+                tmp = tmp.next              # set tmp to tmp.next, constant time
 
-            tmp.next = Node(item)
-            self.tail = Node(item)
+            tmp.next = Node(item)           # set tmp.next to a Node of item, constant time
+            self.tail = Node(item)          # set tail to the Node(item), constant time
 
-    def prepend(self, item):
+    def prepend(self, item):    # constant time
         """Insert the given item at the head of this linked list"""
-        if self.head is None:
-            self.head = Node(item)
-            self.tail = self.head
+        if self.head is None:       # compare head to None, constant time
+            self.head = Node(item)  # set head to Node of item, constant time
+            self.tail = self.head   # set tail to head, constant time
         else:
-            tmp = self.head
-            self.head = Node(item)
-            self.head.next = tmp
+            tmp = self.head         # set tmp to head, constant time
+            self.head = Node(item)  # set head to Node(item), constant time
+            self.head.next = tmp    # set head.next to tmp, constant time
 
-    def delete(self, item):
+    def delete(self, item):     # linear time
         """Delete the given item from this linked list, or raise ValueError"""
         # TODO: find given item and delete if found
-        current = self.head
-        previous = None
-        found = False
-        while current and found is False:
-            if current.data == item:
-                found = True
+        current = self.head                         # set current to head, constant time
+        previous = None                             # set previous to None, constant time
+        found = False                               # set found to False, constant time
+        while current and found is False:           # iterate until found is true and current doesn't exist, linear time
+            if current.data == item:                # compare current.data to the item, constant time
+                found = True                        # set found to true, constant time
             else:
-                previous = current
-                current = current.next
-        if current is None:
-            raise ValueError("Data not in list")
+                previous = current                  # set prevous to current, constant time
+                current = current.next              # set current to current.next, constant time
+        if current is None:                         # check if current is none, constant time
+            raise ValueError("Data not in list")    # raiser error, constant time
 
-        if current.next is None:
-            self.tail = previous
+        if current.next is None:                    # check that current is None, constant time
+            self.tail = previous                    # set tail to previous node, constant time
 
-        if previous is None:
-            self.head = current.next
+        if previous is None:                        # check that previous is None, constant time
+            self.head = current.next                # set head to the next node of current node, constant time
         else:
-            previous.next = current.next
+            previous.next = current.next            # set next node of previous node to the next node of current node, constant time
 
-    def find(self, quality):
+    def find(self, quality):    # linear time
         """Return an item from this linked list satisfying the given quality"""
         # TODO: find item where quality(item) is True
-        for item in self.items():
-            if quality(item):
-                return item
+        for item in self.items():   # iterate through all items in the linked list, linear time
+            if quality(item):       # check that quality(item) is true, constant time
+                return item         # return item, constant time
 
-        return None
+        return None                 # return None, constant time
 
 
 def test_linked_list():
