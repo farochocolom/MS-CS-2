@@ -17,7 +17,7 @@ class Node(object):
 
 class LinkedList(object):
 
-    def __init__(self, iterable=None): # linearˆ2 time
+    def __init__(self, iterable=None):  # linear^2 time
         """Initialize this linked list; append the given items, if any"""
         self.head = None    # Set variable, constant time
         self.tail = None    # Set variable, constant time
@@ -70,19 +70,14 @@ class LinkedList(object):
                 count += 1                          # add one to the count, constant time
             return count                            # return count, constant time
 
-    def append(self, item):     # linear time
+    def append(self, item):     # constant time
         """Insert the given item at the tail of this linked list"""
         new_node = Node(item)               # set new_node to a new Node instance, constant time
         if self.head is None:               # comparing head to None, constant time
             self.head = new_node            # set head to new_node, constant time
-            self.tail = new_node            # set tail to new_node, constant time
         else:
-            tmp = self.head                 # set tmp to head, constant time
-            while tmp.next is not None:     # iterate until tmp.next not None, linear time
-                tmp = tmp.next              # set tmp to tmp.next, constant time
-
-            tmp.next = Node(item)           # set tmp.next to a Node of item, constant time
-            self.tail = Node(item)          # set tail to the Node(item), constant time
+            self.tail.next = new_node       # set tmp.next to a Node of item, constant time
+        self.tail = new_node                # set tail to the Node(item), constant time
 
     def prepend(self, item):    # constant time
         """Insert the given item at the head of this linked list"""
@@ -119,8 +114,8 @@ class LinkedList(object):
 
     def find(self, quality):    # linear time
         """Return an item from this linked list satisfying the given quality"""
-        # TODO: find item where quality(item) is True
-        for item in self.items():   # iterate through all items in the linked list, linear time
+        items = self.items()
+        for item in items:   # iterate through all items in the linked list, linear time
             if quality(item):       # check that quality(item) is true, constant time
                 return item         # return item, constant time
 
