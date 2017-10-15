@@ -1,3 +1,4 @@
 {
-  "DataStructures/hash_table.py::test_hash_table": true
+  "DataStructures/hash_table.py::test_hash_table": true, 
+  "DataStructures/test_hashtable.py::HashTableTest::test_delete": true
 }
