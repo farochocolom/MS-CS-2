@@ -21,6 +21,7 @@ class LinkedList(object):
         """Initialize this linked list; append the given items, if any"""
         self.head = None    # Set variable, constant time
         self.tail = None    # Set variable, constant time
+        self.count = 0
 
         if iterable:    # check condition, constant time
             for item in iterable:   # for loop for each item in iterable, linear time
@@ -78,6 +79,23 @@ class LinkedList(object):
         else:
             self.tail.next = new_node       # set tmp.next to a Node of item, constant time
         self.tail = new_node                # set tail to the Node(item), constant time
+
+    def enqueue(self, item):     # constant time
+        """Insert the given item at the tail of this linked list"""
+        new_node = Node(item)               # set new_node to a new Node instance, constant time
+        if self.head is None:               # comparing head to None, constant time
+            self.head = new_node            # set head to new_node, constant time
+        else:
+            self.tail.next = new_node       # set tmp.next to a Node of item, constant time
+        self.tail = new_node                # set tail to the Node(item), constant time
+        self.count += 1
+
+    def dequeue(self):
+        if self.head is None:
+            raise LookupError("Head is empty, can't dequeue")
+        else:
+            self.head = self.head.next
+        self.count -= 1
 
     def prepend(self, item):    # constant time
         """Insert the given item at the head of this linked list"""

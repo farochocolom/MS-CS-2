@@ -21,6 +21,7 @@ class Queue(object):
         """Initialize this linked list; append the given items, if any"""
         self.head = None    # Set variable, constant time
         self.tail = None    # Set variable, constant time
+        self.count = 0
 
         if iterable:    # check condition, constant time
             for item in iterable:   # for loop for each item in iterable, linear time
@@ -78,6 +79,7 @@ class Queue(object):
         else:
             self.tail.next = new_node       # set tmp.next to a Node of item, constant time
         self.tail = new_node                # set tail to the Node(item), constant time
+        self.count += 1
 
     def prepend(self, item):    # constant time
         """Insert the given item at the head of this linked list"""
@@ -94,6 +96,7 @@ class Queue(object):
             raise LookupError("Head is empty, can't dequeue")
         else:
             self.head = self.head.next
+        self.count -= 1
 
     def find(self, quality):    # linear time
         """Return an item from this linked list satisfying the given quality"""
@@ -103,3 +106,47 @@ class Queue(object):
                 return item         # return item, constant time
 
         return None                 # return None, constant time
+
+
+def test_queue():
+    ll = Queue()
+    print(ll)
+
+    print('Appending items:')
+    ll.append('A')
+    print(ll)
+    ll.append('B')
+    print(ll)
+    ll.append('C')
+    print(ll)
+    print('head: ' + str(ll.head))
+    print('tail: ' + str(ll.tail))
+    print('length: ' + str(ll.length()))
+    print(ll.items())
+
+    for thing in ll:
+        print("things: " + str(thing))
+
+    # Enable this after implementing delete:
+    ll = LinkedList()
+    ll.append('A')
+    ll.append('B')
+    ll.append('C')
+    ll.delete('A')
+    print(ll)
+    print(ll.head.data == 'B')
+    print(ll.tail.data == 'C')
+    ll.delete('C')
+    print(ll)
+    print(ll.head.data == 'B')
+    print(ll.tail.data == 'B')
+    ll.delete('B')
+    print(ll)
+    print(ll.head is None)
+    print(ll.tail is None)
+    # with self.assertRaises(ValueError):
+    #     ll.delete('D')
+
+
+if __name__ == '__main__':
+    test_queue()
