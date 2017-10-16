@@ -1,4 +1,4 @@
-import histogram
+import histograms
 import os
 import re
 import random

@@ -1,4 +1,4 @@
-from Tweet_Generator import cleanup
+import cleanup
 
 
 def tokenize(source_text):

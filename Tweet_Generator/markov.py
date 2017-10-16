@@ -1,6 +1,11 @@
 from pprint import pprint
-from Tweet_Generator import tokenize, sample
-from Tweet_Generator.histograms import Dictogram
+import tokenize
+import sample
+from histograms import Dictogram
+import linkedList
+import hash_table
+# from hash_table import HashTable
+# from queue import Queue
 from collections import ChainMap
 import random
 
@@ -15,10 +20,53 @@ def markov_chain(words_list):
             next_word = words_list[x + 1]
             generated_histogram.add(next_word)
             if current_word in word_dict:
-                word_dict[current_word] = dict(ChainMap(word_dict[current_word], {next_word: generated_histogram[next_word]}))
+                word_dict[current_word] = dict(
+                        ChainMap(word_dict[current_word],
+                        {next_word: generated_histogram[next_word]})
+                    )
             else:
                 word_dict[current_word] = {next_word: generated_histogram[next_word]}
     return word_dict
+
+
+def markov_chain_2nd_order(words_list):
+    window = linkedList.LinkedList()
+    word_dict = Dictogram()
+    generated_histogram = Dictogram()
+    for word in words_list:
+        if window.length() == 3:
+            next_word = window.dequeue().data
+            current_key = window.head.data, window.head.next.data
+            generated_histogram.add(next_word)
+            if current_key in word_dict:
+                word_dict[current_key] = dict(
+                        ChainMap(word_dict[current_key],
+                        {next_word: generated_histogram[next_word]})
+                    )
+            else:
+                word_dict[current_key] = {next_word: generated_histogram[next_word]}
+
+        window.enqueue(word)
+
+    pprint(word_dict)
+
+
+
+    # for current, next_word in zip(words_list[:-1], words_list[1:]):
+    #     print(str(current) + " is followed by " + str(next_word))
+    #     current_word = words_list[x]
+    #
+    #     if x + 1 < len(words_list):
+    #         next_word = words_list[x + 1]
+    #         generated_histogram.add(next_word)
+    #         if current_word in word_dict:
+    #             word_dict[current_word] = dict(
+    #                     ChainMap(word_dict[current_word],
+    #                     {next_word: generated_histogram[next_word]})
+    #                 )
+    #         else:
+    #             word_dict[current_word] = {next_word: generated_histogram[next_word]}
+    # return word_dict
 
 
 def weighted_markov(markov_dict):
@@ -49,7 +97,8 @@ def walk_the_markov(num, weighted_markov_dict):
 
 if __name__ == "__main__":
     fh = tokenize.tokenize('./../SoP.txt')
-    markov_chain_var = markov_chain(fh)
-    weighted = weighted_markov(markov_chain_var)
-    walk_the_markov(10, weighted)
+    markov_chain_var = markov_chain_2nd_order(fh)
+    # markov_chain_var = markov_chain(fh)
+    # weighted = weighted_markov(markov_chain_var)
+    # walk_the_markov(10, weighted)
     # pprint(markov_chain_var)
