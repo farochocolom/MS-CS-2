@@ -34,9 +34,14 @@ def markov_chain_2nd_order(words_list):
     word_dict = Dictogram()
     generated_histogram = Dictogram()
     for word in words_list:
+
         if window.length() == 3:
-            next_word = window.dequeue().data
+            # print(window)
             current_key = window.head.data, window.head.next.data
+            # print(current_key)
+            next_word = window.head.next.next.data
+            window.dequeue().data
+            # print(window)
             generated_histogram.add(next_word)
             if current_key in word_dict:
                 word_dict[current_key] = dict(
@@ -48,10 +53,7 @@ def markov_chain_2nd_order(words_list):
 
         window.enqueue(word)
 
-    pprint(word_dict)
-
-
-
+    return word_dict
     # for current, next_word in zip(words_list[:-1], words_list[1:]):
     #     print(str(current) + " is followed by " + str(next_word))
     #     current_word = words_list[x]
@@ -81,6 +83,7 @@ def weighted_markov(markov_dict):
 def walk_the_markov(num, weighted_markov_dict):
     sentence = []
     current_word = random.choice(list(weighted_markov_dict.keys()))
+    print(current_word)
     for x in range(num):
         next_word = ""
         random_range = random.random()
@@ -88,9 +91,10 @@ def walk_the_markov(num, weighted_markov_dict):
             if random_range > float(item[0]):
                 continue
             else:
-                next_word = item[1]
+                next_word = (current_word[1], item[1])
         current_word = next_word
-        sentence.append(next_word)
+        print(current_word)
+        sentence.append(next_word[1])
 
     return " ".join(sentence)
 
@@ -98,7 +102,8 @@ def walk_the_markov(num, weighted_markov_dict):
 if __name__ == "__main__":
     fh = tokenize.tokenize('./../SoP.txt')
     markov_chain_var = markov_chain_2nd_order(fh)
-    # markov_chain_var = markov_chain(fh)
-    # weighted = weighted_markov(markov_chain_var)
-    # walk_the_markov(10, weighted)
-    # pprint(markov_chain_var)
+    pprint(markov_chain_var)
+    weighted = weighted_markov(markov_chain_var)
+    # pprint(weighted)
+    sentence = walk_the_markov(10, weighted)
+    print(sentence)
