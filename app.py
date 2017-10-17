@@ -11,17 +11,11 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello_world():
-    dirpath = os.getcwd()
-    word_file = stochastic_sampling.process_histogram_without_numbers(
-        dirpath+"/SoP.txt")
-    word_file = tokenize.tokenize('./SoP.txt')
-
-    # sentence = stochastic_sampling.create_random_sentence(10, word_file)
-
-    markov_chain_var = markov.markov_chain(word_file)
+    fh = tokenize.tokenize('./corpus.txt')
+    markov_chain_var = markov.markov_chain_2nd_order(fh)
     weighted = markov.weighted_markov(markov_chain_var)
-    sentence = markov.walk_the_markov(15, weighted)
-
+    # pprint(weighted)
+    sentence = markov.walk_the_markov(10, weighted)
     return render_template('index.html', sentence=sentence)
 
 

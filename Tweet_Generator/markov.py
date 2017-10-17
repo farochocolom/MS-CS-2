@@ -100,9 +100,8 @@ def walk_the_markov(num, weighted_markov_dict):
 
 
 if __name__ == "__main__":
-    fh = tokenize.tokenize('./../SoP.txt')
+    fh = tokenize.tokenize('./corpus.txt')
     markov_chain_var = markov_chain_2nd_order(fh)
-    pprint(markov_chain_var)
     weighted = weighted_markov(markov_chain_var)
     # pprint(weighted)
     sentence = walk_the_markov(10, weighted)
