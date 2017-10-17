@@ -4,8 +4,6 @@ import sample
 from histograms import Dictogram
 import linkedList
 import hash_table
-# from hash_table import HashTable
-# from queue import Queue
 from collections import ChainMap
 import random
 
@@ -88,12 +86,9 @@ def walk_the_markov(weighted_markov_dict):
         for item in weighted_markov_dict[current_word]:
             if random_range > float(item[0]):
                 continue
-
             else:
-
                 next_word = (current_word[1], item[1])
 
-        print(next_word[1] == '[STOP]')
         if next_word[1] == '[STOP]':
             break
         current_word = next_word

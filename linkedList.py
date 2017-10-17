@@ -142,9 +142,6 @@ class LinkedList(object):
 
         return None                 # return None, constant time
 
-    def reset(self):
-        self.__init__
-
 
 def test_linked_list():
     ll = LinkedList()

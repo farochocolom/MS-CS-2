@@ -91,17 +91,17 @@ class HashTable(object):
             else:
                 raise KeyError('Key does not exist')    # constant time
 
-    def set(self, key, value):
+    def set(self, key, value):  # constant time, O(1)
         """Insert or update the given key with its associated value"""
         key_hash = self._bucket_index(key)  # set the key hash to the bucket index
         key_value = key, value  # set the key value to a tuple containing the key and value
-        if self.buckets[key_hash].is_empty():  # 
-            self.buckets[key_hash] = LinkedList([key_value])
+        if self.buckets[key_hash].is_empty():  # check if empty, O(1)
+            self.buckets[key_hash] = LinkedList([key_value]) # set value, constant time
         else:
-            if self.contains(key):
-                self.buckets[key_hash].head.data = (key, value)
+            if self.contains(key):  # check if contains, constant time
+                self.buckets[key_hash].head.data = (key, value)  # set value, constant time
             else:
-                self.buckets[key_hash].append(key_value)
+                self.buckets[key_hash].append(key_value)  # Append, constant time
 
     def delete(self, key):
         """Delete the given key from this hash table, or raise KeyError"""
