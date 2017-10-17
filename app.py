@@ -36,19 +36,8 @@ def create_the_corpus():
         file_to_write.write(text['objects'][0]['text'])
 
     file_to_write.close()
-
-    # file_to_read = open("./pages.txt", "r")
-    # read_file = file_to_read.read()
-    # page_list = read_file.split()
-    # print(page_list)
-    #
-    # resp = requests.get("https://api.diffbot.com/v3/article?token=257975cb7afce09e99c068569f3f19fa&url=https://www.scienceofpeople.com/2017/09/what-is-an-intrapreneur/")
-    # # sentence = resp.content
-    # sentence = resp.content.decode()
-    # text = json.loads(sentence)
     return "tamo xóticos"
-    # return render_template('index.html', sentence=sentence)
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
