@@ -36,12 +36,10 @@ def markov_chain_2nd_order(words_list):
     for word in words_list:
 
         if window.length() == 3:
-            # print(window)
+
             current_key = window.head.data, window.head.next.data
-            # print(current_key)
             next_word = window.head.next.next.data
             window.dequeue().data
-            # print(window)
             generated_histogram.add(next_word)
             if current_key in word_dict:
                 word_dict[current_key] = dict(
