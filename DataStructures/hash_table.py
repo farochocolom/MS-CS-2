@@ -84,20 +84,6 @@ class HashTable(object):
         if key_found:
             return key_found[1]
         raise KeyError('Key does not exist')    # constant time
-        # current_node = bucket.head
-        #
-        # while current_node is not None:
-        #     if current_node.data[0] == key:
-        #         return current_node.data[1]
-
-        # if self.buckets[key_hash] is not None:  # check if the index is empty, constant time
-        #     bucket = self.buckets[key_hash]   # set bucket to the index value, constant time
-        #     # check if bucket is empty, and that the key is equal to the bucket data, constant time
-        #     if not bucket.is_empty() and bucket.head.data[0] == key:
-        #         return bucket.head.data[1]    # constant time
-        #     else:
-        #         raise KeyError('Key does not exist')    # constant time
-
 
     def set(self, key, value):  # constant time, O(1)
         """Insert or update the given key with its associated value"""
@@ -111,11 +97,19 @@ class HashTable(object):
             else:
                 self.buckets[key_hash].append(key_value)  # Append, constant time
 
-    def delete(self, key):
+    def delete(self, key):  # linear time
         """Delete the given key from this hash table, or raise KeyError"""
-        key_to_delete = self.get(key)
+        # key_to_delete = self.get(key)
         key_hash = self._bucket_index(key)
-        self.buckets[key_hash].delete((key, key_to_delete))
+        bucket = self.buckets[key_hash]
+        # item = (key, key_to_delete)
+        # bucket.delete(item)
+        found_value = bucket.find(lambda item: item[0] == key)
+
+        if found_value:
+            bucket.delete(found_value)
+        else:
+            raise KeyError('Could not find {} key to delete'.format(key))
 
 
 def test_hash_table():
