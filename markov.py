@@ -82,20 +82,22 @@ def walk_the_markov(weighted_markov_dict):
     current_word = random.choice(list(weighted_markov_dict["START"]))
     sentence.append(current_word[0])
     sentence.append(current_word[1])
+    for _ in weighted_markov_dict:
+        next_word = ""
+        random_range = random.random()
+        for item in weighted_markov_dict[current_word]:
+            if random_range > float(item[0]):
+                continue
 
-    next_word = ""
-    random_range = random.random()
-    for item in weighted_markov_dict[current_word]:
-        if random_range > float(item[0]):
-            continue
-        else:
-            next_word = (current_word[1], item[1])
+            else:
 
-        if next_word == "[STOP]":
+                next_word = (current_word[1], item[1])
+
+        print(next_word[1] == '[STOP]')
+        if next_word[1] == '[STOP]':
             break
-
-    current_word = next_word
-    sentence.append(next_word[1])
+        current_word = next_word
+        sentence.append(next_word[1])
 
     return " ".join(sentence)
 
