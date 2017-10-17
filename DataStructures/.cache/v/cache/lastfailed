@@ -1,11 +1,1 @@
-{
-  "test_hashtable.py::HashTableTest": true, 
-  "test_hashtable.py::HashTableTest::test_contains": true, 
-  "test_hashtable.py::HashTableTest::test_delete": true, 
-  "test_hashtable.py::HashTableTest::test_items": true, 
-  "test_hashtable.py::HashTableTest::test_keys": true, 
-  "test_hashtable.py::HashTableTest::test_length": true, 
-  "test_hashtable.py::HashTableTest::test_set_and_get": true, 
-  "test_hashtable.py::HashTableTest::test_set_twice_and_get": true, 
-  "test_hashtable.py::HashTableTest::test_values": true
-}
+{}

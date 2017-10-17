@@ -70,26 +70,34 @@ class HashTable(object):
     def contains(self, key):    # constant time
         """Return True if this hash table contains the given key, or False"""
         key_hash = self._bucket_index(key)  # bucket_index is constant time, this is constant time
+        bucket = self.buckets[key_hash]  # bucket_index is constant time, this is constant time
+        key_found = bucket.find(lambda item: item[0] == key)  # linear time
+        if key_found:
+            return True
+        return False    # constant time
 
-        if self.buckets[key_hash] is not None:  # check if the index is empty, constant time
-            node = self.buckets[key_hash]   # set node to the index value, constant time
-            # check if node is empty, and that the key is equal to the node data, constant time
-            if not node.is_empty() and node.head.data[0] == key:
-                return True  # constant time
-            else:
-                return False  # constant time
-
-    def get(self, key):
+    def get(self, key):  # linear time
         """Return the value associated with the given key, or raise KeyError"""
         key_hash = self._bucket_index(key)  # bucket_index is constant time, this is constant time
+        bucket = self.buckets[key_hash]  # bucket_index is constant time, this is constant time
+        key_found = bucket.find(lambda item: item[0] == key)  # linear time
+        if key_found:
+            return key_found[1]
+        raise KeyError('Key does not exist')    # constant time
+        # current_node = bucket.head
+        #
+        # while current_node is not None:
+        #     if current_node.data[0] == key:
+        #         return current_node.data[1]
 
-        if self.buckets[key_hash] is not None:  # check if the index is empty, constant time
-            node = self.buckets[key_hash]   # set node to the index value, constant time
-            # check if node is empty, and that the key is equal to the node data, constant time
-            if not node.is_empty() and node.head.data[0] == key:
-                return node.head.data[1]    # constant time
-            else:
-                raise KeyError('Key does not exist')    # constant time
+        # if self.buckets[key_hash] is not None:  # check if the index is empty, constant time
+        #     bucket = self.buckets[key_hash]   # set bucket to the index value, constant time
+        #     # check if bucket is empty, and that the key is equal to the bucket data, constant time
+        #     if not bucket.is_empty() and bucket.head.data[0] == key:
+        #         return bucket.head.data[1]    # constant time
+        #     else:
+        #         raise KeyError('Key does not exist')    # constant time
+
 
     def set(self, key, value):  # constant time, O(1)
         """Insert or update the given key with its associated value"""
