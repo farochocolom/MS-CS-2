@@ -15,7 +15,7 @@ class Node(object):
         return 'Node({})'.format(repr(self.data))  # format string, constant time
 
 
-class LinkedList(object):
+class Queue(object):
 
     def __init__(self, iterable=None):  # linear^2 time
         """Initialize this linked list; append the given items, if any"""
@@ -71,15 +71,6 @@ class LinkedList(object):
                 count += 1                          # add one to the count, constant time
             return count                            # return count, constant time
 
-    def append(self, item):     # constant time
-        """Insert the given item at the tail of this linked list"""
-        new_node = Node(item)               # set new_node to a new Node instance, constant time
-        if self.head is None:               # comparing head to None, constant time
-            self.head = new_node            # set head to new_node, constant time
-        else:
-            self.tail.next = new_node       # set tmp.next to a Node of item, constant time
-        self.tail = new_node                # set tail to the Node(item), constant time
-
     def enqueue(self, item):     # constant time
         """Insert the given item at the tail of this linked list"""
         new_node = Node(item)               # set new_node to a new Node instance, constant time
@@ -89,16 +80,6 @@ class LinkedList(object):
             self.tail.next = new_node       # set tmp.next to a Node of item, constant time
         self.tail = new_node                # set tail to the Node(item), constant time
         self.count += 1
-
-    def dequeue(self):
-        word_to_return = ""
-        if self.head is None:
-            raise LookupError("Head is empty, can't dequeue")
-        else:
-            word_to_return = self.head
-            self.head = self.head.next
-        self.count -= 1
-        return word_to_return
 
     def prepend(self, item):    # constant time
         """Insert the given item at the head of this linked list"""
@@ -110,28 +91,12 @@ class LinkedList(object):
             self.head = Node(item)  # set head to Node(item), constant time
             self.head.next = tmp    # set head.next to tmp, constant time
 
-    def delete(self, item):     # linear time
-        """Delete the given item from this linked list, or raise ValueError"""
-        # TODO: find given item and delete if found
-        current = self.head                         # set current to head, constant time
-        previous = None                             # set previous to None, constant time
-        found = False                               # set found to False, constant time
-        while current and found is False:           # iterate until found is true and current doesn't exist, linear time
-            if current.data == item:                # compare current.data to the item, constant time
-                found = True                        # set found to true, constant time
-            else:
-                previous = current                  # set prevous to current, constant time
-                current = current.next              # set current to current.next, constant time
-        if current is None:                         # check if current is none, constant time
-            raise ValueError("Data not in list")    # raiser error, constant time
-
-        if current.next is None:                    # check that current is None, constant time
-            self.tail = previous                    # set tail to previous node, constant time
-
-        if previous is None:                        # check that previous is None, constant time
-            self.head = current.next                # set head to the next node of current node, constant time
+    def dequeue(self):
+        if self.head is None:
+            raise LookupError("Head is empty, can't dequeue")
         else:
-            previous.next = current.next            # set next node of previous node to the next node of current node, constant time
+            self.head = self.head.next
+        self.count -= 1
 
     def find(self, quality):    # linear time
         """Return an item from this linked list satisfying the given quality"""
@@ -142,12 +107,9 @@ class LinkedList(object):
 
         return None                 # return None, constant time
 
-    def reset(self):
-        self.__init__
 
-
-def test_linked_list():
-    ll = LinkedList()
+def test_queue():
+    ll = Queue()
     print(ll)
 
     print('Appending items:')
@@ -187,4 +149,4 @@ def test_linked_list():
 
 
 if __name__ == '__main__':
-    test_linked_list()
+    test_queue()
