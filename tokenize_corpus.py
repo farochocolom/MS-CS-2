@@ -1,4 +1,5 @@
 import cleanup
+import sys
 
 
 def tokenize(source_text):

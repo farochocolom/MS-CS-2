@@ -6,8 +6,8 @@ def clean_file(source_text):
     """Clean up a file """
     file_to_read = open(source_text, "r")
     read_file = file_to_read.read()
-    read_file = re.sub('[^a-zA-Z’]+', " ", read_file)
-    # ([a - zA - Z'-]+).(\S*[’[a-z])
+    read_file = re.sub('[^a-zA-Z’\.]+', " ", read_file)
+    read_file = re.sub('[\.]+', ". [STOP]", read_file)
     return read_file
 
 
