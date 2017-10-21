@@ -48,7 +48,7 @@ def create_listogram(word_list):
             new_word_list[word_index + 1] += 1
         else:
             new_word_list.append(word)
-            new_word_list.append(0)
+            new_word_list.append(1)
 
     for x in range(0, len(new_word_list), 2):
         list_of_lists.append([new_word_list[x], new_word_list[x+1]])

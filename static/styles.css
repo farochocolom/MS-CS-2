@@ -1,0 +1,11 @@
+body{
+    background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), url(word_cloud2.png);
+    background-image: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), url(word_cloud2.png);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-color: #27155e;
+    color: #444;
+    /*gets the header streched around the entire viewport */
+    height: 100vh;
+}
