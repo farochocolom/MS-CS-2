@@ -9,3 +9,11 @@ body{
     /*gets the header streched around the entire viewport */
     height: 100vh;
 }
+
+.ui.grid{
+    margin: 25% 0 25% 0;
+}
+
+h1{
+    width: 75%;
+}
