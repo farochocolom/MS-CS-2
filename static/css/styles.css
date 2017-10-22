@@ -11,9 +11,14 @@ body{
 }
 
 .ui.grid{
-    margin: 25% 0 25% 0;
+    /*margin: 25% 0 25% 0;*/
+    /*height: 100vh;*/
 }
 
 h1{
     width: 75%;
+}
+
+.ui.menu, .ui.segment{
+    border-radius: 0;
 }

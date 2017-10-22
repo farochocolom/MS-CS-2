@@ -17,25 +17,34 @@
 
   <body>
 
-      <div class="ui middle aligned centered grid">
-          <div class="row">
-            <h1>{{sentence}}</h1>
-
+        <div class="ui inverted segment">
+          <div class="ui inverted secondary pointing menu">
+            <a class="active item" href="">
+              Home
+            </a>
+            <a class="item" href="">
+              Favorites
+            </a>
+            <a class="item" href="https://www.scienceofpeople.com/">
+              Science of People Website
+            </a>
           </div>
-          <input class="ui teal button" type="button" value="Generate different sentence" onClick="window.location.reload()">
         </div>
 
-
-      <div class="ui grid">
-          <div class="row">
-
-
-
-
-
-          </div>
-
-      </div>
+        <div class="ui middle aligned centered grid">
+            <div class="row">
+                <img src="../static/SoPLogo.png" alt="">
+            </div>
+            <div class="row">
+                <h2>Tweet Generator</h2>
+            </div>
+            <div class="row">
+                <h1>{{sentence}}</h1>
+            </div>
+            <div class="row">
+                <input class="ui teal button" type="button" value="Generate different sentence" onClick="window.location.reload()">
+            </div>
+        </div>
   </body>
   <script
   src="https://code.jquery.com/jquery-3.2.1.min.js"
