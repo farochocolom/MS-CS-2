@@ -19,10 +19,10 @@
 
         <div class="ui inverted segment">
           <div class="ui inverted secondary pointing menu">
-            <a class="active item" href="">
+            <a class="active item" href="/">
               Home
             </a>
-            <a class="item" href="">
+            <a class="item" href="/favorites">
               Favorites
             </a>
             <a class="item" href="https://www.scienceofpeople.com/">
@@ -36,16 +36,23 @@
                 <img src="../static/SoPLogo.png" alt="">
             </div>
             <div class="row">
-                <h2>Tweet Generator</h2>
+                <h2 class="tweet_gen">Tweet Generator</h2>
             </div>
             <div class="row">
                 <h1>{{sentence}}</h1>
             </div>
             <div class="row">
-                <input class="ui teal button" type="button" value="Generate different sentence" onClick="window.location.reload()">
+                <button class="ui teal button" type="button" name="button">Tweet</button>
+                <form class="ui form" action="{{ url_for('favorites') }}" method=post>
+                    <input id="sentence" name="sentence" type="hidden" value="{{sentence}}">
+                  <button class="ui button" type="submit">Save to favorites</button>
+                </form>
+                <input class="ui button" type="button" value="Generate different sentence" onClick="window.location.reload()">
+
             </div>
         </div>
   </body>
+  <script src="https://use.fontawesome.com/9329e97e9b.js"></script>
   <script
   src="https://code.jquery.com/jquery-3.2.1.min.js"
   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="

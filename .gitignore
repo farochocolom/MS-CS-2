@@ -1,4 +1,7 @@
 var.env
 .idea/workspace.xml
+.idea/
+.cache/
+__pycache__/
 *.xml
-development/
+venv/

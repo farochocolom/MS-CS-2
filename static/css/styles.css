@@ -1,6 +1,6 @@
 body{
     background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), url(word_cloud2.png);
-    background-image: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), url(word_cloud2.png);
+    background-image: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url(word_cloud2.png);
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -19,6 +19,28 @@ h1{
     width: 75%;
 }
 
+.tweet_gen{
+    font-size: 300%;
+    color: #1d96ff;
+}
+
 .ui.menu, .ui.segment{
     border-radius: 0;
+}
+
+.ui.relaxed.list:not(.horizontal) > .item:not(:first-child), .ui.relaxed.list:not(.horizontal) > .item:not(:last-child) {
+    padding: 2.5em 0
+}
+
+ul.ui.list li:before, .ui.bulleted.list .list > .item:before, .ui.bulleted.list > .item:before {
+    user-select: none;
+    pointer-events: none;
+    position: absolute;
+    top: auto;
+    left: auto;
+    font-weight: normal;
+    margin-left: -1.25rem;
+    content: none;
+    opacity: 1;
+    color: inherit;
 }
